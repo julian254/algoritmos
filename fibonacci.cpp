@@ -67,6 +67,28 @@ unsigned int fibonacci(unsigned int n) {
 	return a;
 }
 
+long fibonacci(long n) {
+	long a = 0, b = 1;
+	
+	for(int i = 0; i < n; i++) {
+		b = a + b;
+		a = b - a;
+	}
+	
+	return a;
+}
+
+unsigned long fibonacci(unsigned long n) {
+	unsigned long a = 0, b = 1;
+	
+	for(int i = 0; i < n; i++) {
+		b = a + b;
+		a = b - a;
+	}
+	
+	return a;
+}
+
 void testCharFib() {
 	char last0 = 0, last1 = 1;
 	for(char i = 2; true; i++) {
@@ -103,7 +125,7 @@ void testUCharFib() {
 
 void testShortFib() {
 	short last0 = 0, last1 = 1;
-	for(short i = 2; i < 30; i++) {
+	for(short i = 2; true; i++) {
 		
 		int fib = fibonacci(i);
 		
@@ -120,7 +142,7 @@ void testShortFib() {
 
 void testUShortFib() {
 	unsigned short last0 = 0, last1 = 1;
-	for(unsigned short i = 2; i < 30; i++) {
+	for(unsigned short i = 2; true; i++) {
 		
 		int fib = fibonacci(i);
 		
@@ -139,7 +161,7 @@ void testIntFib() {
 	int last0 = 0, last1 = 1;
 	for(int i = 2; true; i++) {
 		
-		int fib = fibonacci(i);
+		long fib = fibonacci(i);
 		
 		if (fib - last1 != last0) {
 			cout << "Para int, se produce overflow con ";
@@ -156,10 +178,44 @@ void testUIntFib() {
 	unsigned int last0 = 0, last1 = 1;
 	for(unsigned int i = 2; true; i++) {
 		
-		int fib = fibonacci(i);
+		long fib = fibonacci(i);
 		
 		if (fib - last1 != last0) {
 			cout << "Para unsigned int, se produce overflow con ";
+			cout << (int) i; cout << "\n";
+			break;
+		}
+		
+		last0 = last1;
+		last1 = fib;
+	}
+}
+
+void testLongFib() {
+	long last0 = 0, last1 = 1;
+	for(long i = 2;true; i++) {
+		
+		long long fib = fibonacci(i);
+		
+		if (fib - last1 != last0) {
+			cout << "Para long, se produce overflow con ";
+			cout << (int) i; cout << "\n";
+			break;
+		}
+		
+		last0 = last1;
+		last1 = fib;
+	}
+}
+
+void testULongFib() {
+	unsigned long last0 = 0, last1 = 1;
+	for(unsigned long i = 2; true; i++) {
+		
+		long long fib = fibonacci(i);
+		
+		if (fib - last1 != last0) {
+			cout << "Para unsigned long, se produce overflow con ";
 			cout << (int) i; cout << "\n";
 			break;
 		}
@@ -176,5 +232,7 @@ int main() {
 	testUShortFib();
 	testIntFib();
 	testUIntFib();
+	testLongFib();
+	testULongFib();
 	return 0;
 }
