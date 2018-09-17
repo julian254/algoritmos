@@ -226,13 +226,13 @@ void testULongFib() {
 }
 
 int main() {
-	testCharFib();
-	testUCharFib();
-	testShortFib();
-	testUShortFib();
-	testIntFib();
-	testUIntFib();
-	testLongFib();
-	testULongFib();
+	testCharFib(); // overflow con 12
+	testUCharFib(); // overflow con 14
+	testShortFib(); // overflow con 24
+	testUShortFib(); // overflow con 25
+	testIntFib(); // overflow con 47
+	testUIntFib(); // overflow con 48
+	testLongFib(); // overflow con 93
+	testULongFib(); // overflow con 94
 	return 0;
 }
